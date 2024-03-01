@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const expect = require('chai');
 const socket = require('socket.io');
 const helmet = require('helmet');
+const noCache = require('nocache');
 const cors = require('cors');
 
 const fccTestingRoutes = require('./routes/fcctesting.js');
@@ -21,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //  helmet part
 app.use(helmet.noSniff());
 app.use(helmet.xssFilter());
-app.use(helmet.noCache());
+app.use(noCache());
 app.use(helmet.hidePoweredBy({ setTo: 'PHP 7.4.3' }));
 
 
